@@ -1,11 +1,3 @@
-//
-//  StartAssembly.swift
-//  Start
-//
-//  Created by Zafar Ivaev on 20/08/23.
-//  
-//
-
 import UIKit
 import Services
 
