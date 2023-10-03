@@ -42,9 +42,9 @@ targets:
                 TARGETED_DEVICE_FAMILY: 1
                 PRODUCT_BUNDLE_IDENTIFIER: "info.bigears.Scaffold"
                 CURRENT_PROJECT_VERSION: 1
-        sources: [Scaffold/Application, Scaffold/ScaffoldUI/Assets.xcassets]
+        sources: [Scaffold/Application]
         dependencies:
-            - target: ScaffoldUI
+            - target: Onboarding
         
     ScaffoldUI:
         templates:
