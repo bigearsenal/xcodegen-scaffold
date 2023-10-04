@@ -53,10 +53,10 @@ targets:
             - Module
         sources: [Scaffold/ScaffoldUI]
 
-    ScaffoldKit:
+    Common:
         templates:
             - Module
-        sources: [Scaffold/ScaffoldKit]
+        sources: [Scaffold/ScaffoldKit/Common]
 
     # Main
     Main:
@@ -84,7 +84,7 @@ targets:
         sources: [Scaffold/Scenes/Onboarding/Login]
         dependencies:
             - target: ScaffoldUI
-            - target: ScaffoldKit
+            - target: Common
 
     # Onboarding/SignUp
     SignUp:
@@ -93,7 +93,7 @@ targets:
         sources: [Scaffold/Scenes/Onboarding/SignUp]
         dependencies:
             - target: ScaffoldUI
-            - target: ScaffoldKit
+            - target: Common
 
     # Home
     Home:
@@ -102,5 +102,5 @@ targets:
         sources: [Scaffold/Scenes/Home]
         dependencies:
             - target: ScaffoldUI
-            - target: ScaffoldKit
+            - target: Common
         
