@@ -1,9 +1,8 @@
 name: Scaffold
 
-# packages:
-#     Resolver:
-#         url: https://github.com/hmlongco/Resolver.git
-#         exactVersion: 1.5.0
+packages:
+    ScaffoldKit:
+        path: ./Packages/ScaffoldKit
 
 options:
     bundleIdPrefix: info.bigears.Scaffold
@@ -12,7 +11,7 @@ options:
         iOS: 16.0
     groupOrdering:
         - pattern: '^.*Scaffold'
-          order: [Application, Scenes, ScaffoldUI, ScaffoldKit]
+          order: [Application, Scenes, ScaffoldUI]
         - pattern: '^.*Scenes$'
           order: [Main, Onboarding, Home]
         - pattern: '^.*Onboarding$'
@@ -61,7 +60,7 @@ targets:
     Common:
         templates:
             - Module
-        sources: [Scaffold/ScaffoldKit/Common]
+        sources: [Scaffold/Common]
 
     # Main
     Main:
