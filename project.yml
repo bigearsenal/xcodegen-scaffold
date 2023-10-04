@@ -45,6 +45,7 @@ targets:
         sources: [Scaffold/Application]
         dependencies:
             - target: Onboarding
+            - target: Main
         
     ScaffoldUI:
         templates:

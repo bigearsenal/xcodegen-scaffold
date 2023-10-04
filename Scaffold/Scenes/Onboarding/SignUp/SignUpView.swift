@@ -1,11 +1,23 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @StateObject private var viewModel: SignUpViewModel
+
+    init(onSignedUp: @escaping () -> Void) {
+        _viewModel = .init(wrappedValue: .init(onSignedUp: onSignedUp))
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            Task {
+                await viewModel.signUp()
+            }
+        }, label: {
+            Text("Sign up")
+        })
     }
 }
 
 #Preview {
-    SignUpView()
+    SignUpView {}
 }

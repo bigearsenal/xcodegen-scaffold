@@ -1,11 +1,23 @@
 import SwiftUI
 
 struct LoginView: View {
+    @StateObject private var viewModel: LoginViewModel
+
+    init(onLoggedIn: @escaping () -> Void) {
+        _viewModel = .init(wrappedValue: .init(onLoggedIn: onLoggedIn))
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            Task {
+                await viewModel.login()
+            }
+        }, label: {
+            Text("Login")
+        })
     }
 }
 
 #Preview {
-    LoginView()
+    LoginView {}
 }
