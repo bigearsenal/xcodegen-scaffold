@@ -1,26 +1,25 @@
+import Home
+import Onboarding
 import SwiftUI
 
 public struct MainView: View {
-    @StateObject private var viewModel: MainViewModel
+    @StateObject private var viewModel: ContentViewModel = .init()
 
-    public init(onLoggedOut: @escaping () -> Void) {
-        _viewModel = .init(wrappedValue: .init(onLoggedOut: onLoggedOut))
-    }
+    public init() {}
 
     public var body: some View {
-        VStack {
-            Text("Hello!")
-            Button(action: {
-                Task {
-                    await viewModel.logout()
-                }
-            }, label: {
-                Text("Log out")
-            })
+        if viewModel.isLoggedIn {
+            HomeView {
+                viewModel.isLoggedIn = false
+            }
+        } else {
+            OnboardingView {
+                viewModel.isLoggedIn = true
+            }
         }
     }
 }
 
 #Preview {
-    MainView {}
+    MainView()
 }

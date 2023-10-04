@@ -1,6 +1,6 @@
 import Foundation
 
-final class MainViewModel: ObservableObject {
+final class HomeViewModel: ObservableObject {
     // MARK: - Properties
 
     private var onLoggedOut: () -> Void

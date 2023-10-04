@@ -7,13 +7,13 @@ options:
         iOS: 16.0
     groupOrdering:
         - pattern: '^.*Scaffold'
-          order: [Application, Common, Scenes, ScaffoldUI]
+          order: [Application, Scenes, ScaffoldUI, ScaffoldKit]
         - pattern: '^.*Scenes$'
-          order: [Onboarding, Main]
+          order: [Main, Onboarding, Home]
         - pattern: '^.*Onboarding$'
           order: [Onboarding, Login, SignUp]
         # - pattern: '^.*Features$'
-        #   order: [Start, Sign In, Main, Quotes, Quote Detail, Settings]
+        #   order: [Start, Sign In, Home, Quotes, Quote Detail, Settings]
         
 targetTemplates:
     Module:
@@ -46,7 +46,6 @@ targets:
                 CURRENT_PROJECT_VERSION: 1
         sources: [Scaffold/Application]
         dependencies:
-            - target: Onboarding
             - target: Main
         
     ScaffoldUI:
@@ -54,10 +53,20 @@ targets:
             - Module
         sources: [Scaffold/ScaffoldUI]
 
-    Common:
+    ScaffoldKit:
         templates:
             - Module
-        sources: [Scaffold/Common]
+        sources: [Scaffold/ScaffoldKit]
+
+    # Main
+    Main:
+        templates:
+            - Module
+        sources: [Scaffold/Scenes/Main]
+        dependencies:
+            - target: Onboarding
+            - target: Home
+
 
     # Onboarding
     Onboarding:
@@ -75,7 +84,7 @@ targets:
         sources: [Scaffold/Scenes/Onboarding/Login]
         dependencies:
             - target: ScaffoldUI
-            - target: Common
+            - target: ScaffoldKit
 
     # Onboarding/SignUp
     SignUp:
@@ -84,99 +93,14 @@ targets:
         sources: [Scaffold/Scenes/Onboarding/SignUp]
         dependencies:
             - target: ScaffoldUI
-            - target: Common
+            - target: ScaffoldKit
 
-    # Main
-    Main:
+    # Home
+    Home:
         templates:
             - Module
-        sources: [Scaffold/Scenes/Main]
+        sources: [Scaffold/Scenes/Home]
         dependencies:
             - target: ScaffoldUI
-            - target: Common
-        
-    # Navigator:
-    #     templates:
-    #         - Module
-    #     sources: [Scaffold/Presentation/Navigator]
-    #     dependencies:
-    #         - target: Start
-    #         - target: SignIn
-    #         - target: Main
-    #         - target: Quotes
-    #         - target: QuoteDetail
-    #         - target: Settings
-            
-    # Models:
-    #     templates:
-    #         - Module
-    #     sources: [Scaffold/Presentation/Models]
-    #     dependencies:
-    #         - target: Entities
-            
-    # Start:
-    #     templates:
-    #         - Module
-    #     sources: [Scaffold/Presentation/Features/Start]
-    #     dependencies:
-    #         - target: Services
-            
-    # SignIn:
-    #     templates:
-    #         - Module
-    #     sources: [Scaffold/Presentation/Features/Sign In]
-    #     dependencies:
-    #         - target: Models
-    #         - target: Services
-
-    # Main:
-    #     templates:
-    #         - Module
-    #     sources: [Scaffold/Presentation/Features/Main]
-        
-    # Quotes:
-    #     templates:
-    #         - Module
-    #     sources: [Scaffold/Presentation/Features/Quotes]
-    #     dependencies:
-    #         - target: Services
-    #         - target: Models
-            
-    # QuoteDetail:
-    #     templates:
-    #         - Module
-    #     sources: [Scaffold/Presentation/Features/Quote Detail]
-    #     dependencies:
-    #         - target: Models
-            
-    # Settings:
-    #     templates:
-    #         - Module
-    #     sources: [Scaffold/Presentation/Features/Settings]
-    #     dependencies:
-    #         - target: Services
-            
-    # Endpoints:
-    #     templates:
-    #         - Module
-    #     sources: [Scaffold/Data/Endpoints]
-        
-    # Services:
-    #     templates:
-    #         - Module
-    #     sources: [Scaffold/Data/Services]
-    #     dependencies:
-    #         - target: Endpoints
-    #         - target: Entities
-    #         - target: Networker
-            
-    # Networker:
-    #     templates:
-    #         - Module
-    #     sources: [Scaffold/Domain/Networker]
-            
-    # Entities:
-    #     templates:
-    #         - Module
-    #     sources: [Scaffold/Domain/Entities]
+            - target: ScaffoldKit
         
