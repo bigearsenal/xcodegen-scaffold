@@ -8,8 +8,8 @@ options:
     groupOrdering:
         - pattern: '^.*Scaffold'
           order: [Application, Common, Scenes, ScaffoldUI]
-        # - pattern: '^.*Presentation$'
-        #   order: [Assets, Navigator, Features, Models]
+        - pattern: '^.*Scenes$'
+          order: [Onboarding, Main]
         # - pattern: '^.*Features$'
         #   order: [Start, Sign In, Main, Quotes, Quote Detail, Settings]
         
@@ -56,10 +56,38 @@ targets:
             - Module
         sources: [Scaffold/Common]
 
+    # Onboarding
     Onboarding:
         templates:
             - Module
         sources: [Scaffold/Scenes/Onboarding]
+        dependencies:
+            - target: Login
+            - target: SignUp
+
+    # Onboarding/Login
+    Login:
+        templates:
+            - Module
+        sources: [Scaffold/Scenes/Onboarding/Login]
+        dependencies:
+            - target: ScaffoldUI
+            - target: Common
+
+    # Onboarding/SignUp
+    SignUp:
+        templates:
+            - Module
+        sources: [Scaffold/Scenes/Onboarding/SignUp]
+        dependencies:
+            - target: ScaffoldUI
+            - target: Common
+
+    # Main
+    Main:
+        templates:
+            - Module
+        sources: [Scaffold/Scenes/Main]
         dependencies:
             - target: ScaffoldUI
             - target: Common
