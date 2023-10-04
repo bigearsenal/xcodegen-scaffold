@@ -1,23 +1,30 @@
-name: SimpsonsQuotes
+name: Scaffold
+
+# packages:
+#     Resolver:
+#         url: https://github.com/hmlongco/Resolver.git
+#         exactVersion: 1.5.0
 
 options:
-    bundleIdPrefix: com.zafar.simpsons-quotes
+    bundleIdPrefix: info.bigears.Scaffold
     createIntermediateGroups: true
     deploymentTarget:
-        iOS: 15.0
+        iOS: 16.0
     groupOrdering:
-        - pattern: '^.*SimpsonsQuotes'
-          order: [Application, Presentation, Data, Domain]
-        - pattern: '^.*Presentation$'
-          order: [Assets, Navigator, Features, Models]
-        - pattern: '^.*Features$'
-          order: [Start, Sign In, Main, Quotes, Quote Detail, Settings]
+        - pattern: '^.*Scaffold'
+          order: [Application, Scenes, ScaffoldUI, ScaffoldKit]
+        - pattern: '^.*Scenes$'
+          order: [Main, Onboarding, Home]
+        - pattern: '^.*Onboarding$'
+          order: [Onboarding, Login, SignUp]
+        # - pattern: '^.*Features$'
+        #   order: [Start, Sign In, Home, Quotes, Quote Detail, Settings]
         
 targetTemplates:
     Module:
         type: framework
         platform: iOS
-        deploymentTarget: 15.0
+        deploymentTarget: 16.0
         settings:
             base:
                 GENERATE_INFOPLIST_FILE: true
@@ -29,10 +36,10 @@ targets:
         type: application
         platform: iOS
         info:
-            path: SimpsonsQuotes/Application/Info.plist
+            path: Scaffold/Application/Info.plist
             properties:
                 UILaunchStoryboardName: "LaunchScreen"
-                CFBundleDisplayName: "SimpsonsQuotes"
+                CFBundleDisplayName: "Scaffold"
                 CFBundleShortVersionString: "1.0.0"
                 UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
                 NSAppTransportSecurity:
@@ -40,100 +47,65 @@ targets:
         settings:
             base:
                 TARGETED_DEVICE_FAMILY: 1
-                PRODUCT_BUNDLE_IDENTIFIER: "com.zafar.simpsons-quotes"
+                PRODUCT_BUNDLE_IDENTIFIER: "info.bigears.Scaffold"
                 CURRENT_PROJECT_VERSION: 1
-        sources: [SimpsonsQuotes/Application, SimpsonsQuotes/Presentation/Assets/Assets.xcassets]
+        sources: [Scaffold/Application]
         dependencies:
-            - target: Assets
-            - target: Navigator
-        
-    Assets:
-        templates:
-            - Module
-        sources: [SimpsonsQuotes/Presentation/Assets]
-        
-    Navigator:
-        templates:
-            - Module
-        sources: [SimpsonsQuotes/Presentation/Navigator]
-        dependencies:
-            - target: Start
-            - target: SignIn
             - target: Main
-            - target: Quotes
-            - target: QuoteDetail
-            - target: Settings
-            
-    Models:
+        
+    ScaffoldUI:
         templates:
             - Module
-        sources: [SimpsonsQuotes/Presentation/Models]
-        dependencies:
-            - target: Entities
-            
-    Start:
-        templates:
-            - Module
-        sources: [SimpsonsQuotes/Presentation/Features/Start]
-        dependencies:
-            - target: Services
-            
-    SignIn:
-        templates:
-            - Module
-        sources: [SimpsonsQuotes/Presentation/Features/Sign In]
-        dependencies:
-            - target: Models
-            - target: Services
+        sources: [Scaffold/ScaffoldUI]
 
+    Common:
+        templates:
+            - Module
+        sources: [Scaffold/ScaffoldKit/Common]
+
+    # Main
     Main:
         templates:
             - Module
-        sources: [SimpsonsQuotes/Presentation/Features/Main]
-        
-    Quotes:
-        templates:
-            - Module
-        sources: [SimpsonsQuotes/Presentation/Features/Quotes]
+        sources: [Scaffold/Scenes/Main]
         dependencies:
-            - target: Services
-            - target: Models
-            
-    QuoteDetail:
+            - target: Onboarding
+            - target: Home
+
+
+    # Onboarding
+    Onboarding:
         templates:
             - Module
-        sources: [SimpsonsQuotes/Presentation/Features/Quote Detail]
+        sources: [Scaffold/Scenes/Onboarding/Onboarding]
         dependencies:
-            - target: Models
-            
-    Settings:
+            - target: Login
+            - target: SignUp
+
+    # Onboarding/Login
+    Login:
         templates:
             - Module
-        sources: [SimpsonsQuotes/Presentation/Features/Settings]
+        sources: [Scaffold/Scenes/Onboarding/Login]
         dependencies:
-            - target: Services
-            
-    Endpoints:
+            - target: ScaffoldUI
+            - target: Common
+
+    # Onboarding/SignUp
+    SignUp:
         templates:
             - Module
-        sources: [SimpsonsQuotes/Data/Endpoints]
-        
-    Services:
-        templates:
-            - Module
-        sources: [SimpsonsQuotes/Data/Services]
+        sources: [Scaffold/Scenes/Onboarding/SignUp]
         dependencies:
-            - target: Endpoints
-            - target: Entities
-            - target: Networker
-            
-    Networker:
+            - target: ScaffoldUI
+            - target: Common
+
+    # Home
+    Home:
         templates:
             - Module
-        sources: [SimpsonsQuotes/Domain/Networker]
-            
-    Entities:
-        templates:
-            - Module
-        sources: [SimpsonsQuotes/Domain/Entities]
+        sources: [Scaffold/Scenes/Home]
+        dependencies:
+            - target: ScaffoldUI
+            - target: Common
         
