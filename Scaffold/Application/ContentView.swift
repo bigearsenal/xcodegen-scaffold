@@ -4,12 +4,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(.flower2)
+            Image(.flower)
                 .resizable()
                 .frame(width: 40, height: 40)
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
             Text("Hello, world!")
             OnboardingView()
         }

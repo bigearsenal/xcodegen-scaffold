@@ -7,7 +7,7 @@ options:
         iOS: 16.0
     groupOrdering:
         - pattern: '^.*Scaffold'
-          order: [Application, Scenes, ScaffoldUI]
+          order: [Application, Common, Scenes, ScaffoldUI]
         # - pattern: '^.*Presentation$'
         #   order: [Assets, Navigator, Features, Models]
         # - pattern: '^.*Features$'
@@ -51,10 +51,10 @@ targets:
             - Module
         sources: [Scaffold/ScaffoldUI]
 
-    ScaffoldKit:
+    Common:
         templates:
             - Module
-        sources: [Scaffold/ScaffoldKit]
+        sources: [Scaffold/Common]
 
     Onboarding:
         templates:
@@ -62,6 +62,7 @@ targets:
         sources: [Scaffold/Scenes/Onboarding]
         dependencies:
             - target: ScaffoldUI
+            - target: Common
         
     # Navigator:
     #     templates:

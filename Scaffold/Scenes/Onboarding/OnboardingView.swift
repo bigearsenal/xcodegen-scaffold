@@ -1,3 +1,4 @@
+import Common
 import SwiftUI
 
 public struct OnboardingView: View {
@@ -9,6 +10,9 @@ public struct OnboardingView: View {
                 .resizable()
                 .frame(width: 40, height: 40)
             Text("Hello, World!")
+        }
+        .onAppear {
+            TestService().sayHello()
         }
     }
 }
