@@ -98,7 +98,6 @@ targets:
         sources: [Scaffold/Scenes/Onboarding/SignUp]
         dependencies:
             - target: ScaffoldUI
-            - target: Common
 
     # Home
     Home:
@@ -107,5 +106,4 @@ targets:
         sources: [Scaffold/Scenes/Home]
         dependencies:
             - target: ScaffoldUI
-            - target: Common
         
