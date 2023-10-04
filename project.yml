@@ -1,5 +1,10 @@
 name: Scaffold
 
+# packages:
+#     Resolver:
+#         url: https://github.com/hmlongco/Resolver.git
+#         exactVersion: 1.5.0
+
 options:
     bundleIdPrefix: info.bigears.Scaffold
     createIntermediateGroups: true
