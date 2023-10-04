@@ -89,7 +89,6 @@ targets:
         sources: [Scaffold/Scenes/Onboarding/Login]
         dependencies:
             - target: ScaffoldUI
-            - target: Common
 
     # Onboarding/SignUp
     SignUp:

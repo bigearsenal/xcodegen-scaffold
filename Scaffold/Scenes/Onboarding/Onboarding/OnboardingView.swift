@@ -1,4 +1,3 @@
-import Common
 import Login
 import SignUp
 import SwiftUI
@@ -46,9 +45,6 @@ public struct OnboardingView: View {
                 viewModel.onLoggedIn()
             }
         })
-        .onAppear {
-            TestService().sayHello()
-        }
     }
 }
 
