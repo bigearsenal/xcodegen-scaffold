@@ -1,5 +1,5 @@
-import Common
 import Login
+import Resolver
 import SignUp
 import SwiftUI
 
@@ -37,7 +37,7 @@ public struct OnboardingView: View {
             })
         }
         .sheet(isPresented: $showLogin, content: {
-            LoginView {
+            LoginView(loginService: Resolver.resolve()) {
                 viewModel.onLoggedIn()
             }
         })
@@ -46,9 +46,6 @@ public struct OnboardingView: View {
                 viewModel.onLoggedIn()
             }
         })
-        .onAppear {
-            TestService().sayHello()
-        }
     }
 }
 
