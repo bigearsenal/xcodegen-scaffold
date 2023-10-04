@@ -18,6 +18,7 @@ options:
           order: [Onboarding, Login, SignUp]
         # - pattern: '^.*Features$'
         #   order: [Start, Sign In, Home, Quotes, Quote Detail, Settings]
+    preGenCommand: rm -rf ~/Library/Developer/Xcode/DerivedData/Scaffold-* # clean build folder before xcodegen
         
 targetTemplates:
     Module:
