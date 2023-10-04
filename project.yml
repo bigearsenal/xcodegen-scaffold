@@ -10,6 +10,8 @@ options:
           order: [Application, Common, Scenes, ScaffoldUI]
         - pattern: '^.*Scenes$'
           order: [Onboarding, Main]
+        - pattern: '^.*Onboarding$'
+          order: [Onboarding, Login, SignUp]
         # - pattern: '^.*Features$'
         #   order: [Start, Sign In, Main, Quotes, Quote Detail, Settings]
         
@@ -61,7 +63,7 @@ targets:
     Onboarding:
         templates:
             - Module
-        sources: [Scaffold/Scenes/Onboarding]
+        sources: [Scaffold/Scenes/Onboarding/Onboarding]
         dependencies:
             - target: Login
             - target: SignUp
