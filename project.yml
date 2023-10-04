@@ -90,6 +90,7 @@ targets:
         dependencies:
             - target: ScaffoldUI
             - target: Common
+            - package: Resolver
 
     # Onboarding/SignUp
     SignUp:
