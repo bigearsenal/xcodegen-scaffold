@@ -10,6 +10,8 @@ final class LoginViewModel: ObservableObject {
 
     private var onLoggedIn: () -> Void
 
+    var username: String { loginService.username }
+
     // MARK: - Initializer
 
     init(

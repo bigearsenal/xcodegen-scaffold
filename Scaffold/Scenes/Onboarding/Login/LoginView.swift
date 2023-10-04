@@ -18,13 +18,16 @@ public struct LoginView: View {
     }
 
     public var body: some View {
-        Button(action: {
-            Task {
-                await viewModel.login()
-            }
-        }, label: {
-            Text("Login")
-        })
+        VStack {
+            Text(viewModel.username)
+            Button(action: {
+                Task {
+                    await viewModel.login()
+                }
+            }, label: {
+                Text("Login")
+            })
+        }
     }
 }
 
