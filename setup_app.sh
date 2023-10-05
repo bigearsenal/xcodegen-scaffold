@@ -56,12 +56,18 @@ clone_and_configure() {
     # Create an empty Config.xcconfig file in the Application folder
     touch "$app_name/Application/Config.xcconfig"
 
+    # xcodegen
+    xcodegen
+
     # Initialize a new Git repository
+    rm -rf ".git"
     git init
     
     # Create an initial commit
     git add .
     git commit -m "Initial commit"
+
+    xed .
 }
 
 # Main script starts here
