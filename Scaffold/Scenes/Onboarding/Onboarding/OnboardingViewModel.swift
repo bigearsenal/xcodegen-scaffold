@@ -1,9 +1,18 @@
 import Foundation
 
+enum NavigatableScene: Int, Identifiable {
+    var id: Int { rawValue }
+
+    case login = 0
+    case signUp
+}
+
 final class OnboardingViewModel: ObservableObject {
     // MARK: - Properties
 
-    var onLoggedIn: () -> Void
+    let onLoggedIn: () -> Void
+
+    @Published var currentScene: NavigatableScene?
 
     // MARK: - Initializers
 

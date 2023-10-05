@@ -6,8 +6,6 @@ public struct OnboardingView: View {
     // MARK: - Properties
 
     @StateObject private var viewModel: OnboardingViewModel
-    @State private var showLogin = false
-    @State private var showSignUp = false
 
     // MARK: - Initializer
 
@@ -24,27 +22,29 @@ public struct OnboardingView: View {
             Text("Login or Sign up to continue")
 
             Button(action: {
-                showLogin = true
+                viewModel.currentScene = .login
             }, label: {
                 Text("Login")
             })
 
             Button(action: {
-                showSignUp = true
+                viewModel.currentScene = .signUp
             }, label: {
                 Text("Sign up")
             })
         }
-        .sheet(isPresented: $showLogin, content: {
-            LoginView {
-                viewModel.onLoggedIn()
+        .sheet(item: $viewModel.currentScene) { scene in
+            switch scene {
+            case .login:
+                LoginView {
+                    viewModel.onLoggedIn()
+                }
+            case .signUp:
+                SignUpView {
+                    viewModel.onLoggedIn()
+                }
             }
-        })
-        .sheet(isPresented: $showSignUp, content: {
-            SignUpView {
-                viewModel.onLoggedIn()
-            }
-        })
+        }
     }
 }
 
