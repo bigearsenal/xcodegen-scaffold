@@ -55,6 +55,9 @@ targets:
                 TARGETED_DEVICE_FAMILY: 1
                 PRODUCT_BUNDLE_IDENTIFIER: "info.bigears.Scaffold"
                 CURRENT_PROJECT_VERSION: 1
+        configFiles:
+            Debug: Scaffold/Application/Config.xcconfig
+            Release: Scaffold/Application/Config.xcconfig
         sources: [Scaffold/Application]
         dependencies:
             - target: Main
