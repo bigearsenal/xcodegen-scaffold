@@ -1,15 +1,16 @@
+import Common
 import Home
 import Onboarding
 import SwiftUI
 
-public struct MainCoordinatorView: View {
-    @ObservedObject var coordinator: MainCoordinator
+public struct MainCoordinatorView: CoordinatorView {
+    @ObservedObject public var coordinator: MainCoordinator
 
     public init(coordinator: MainCoordinator) {
         self.coordinator = coordinator
     }
 
-    public var body: some View {
+    public var content: some View {
         switch coordinator.currentView {
         case .home:
             HomeView {

@@ -1,12 +1,13 @@
+import Common
 import Login
 import SignUp
 import SwiftUI
 import SwiftUINavigation
 
-public struct OnboardingCoordinatorView: View {
+public struct OnboardingCoordinatorView: CoordinatorView {
     // MARK: - Properties
 
-    @ObservedObject private var coordinator: OnboardingCoordinator
+    @ObservedObject public var coordinator: OnboardingCoordinator
 
     // MARK: - Initializer
 
@@ -14,7 +15,7 @@ public struct OnboardingCoordinatorView: View {
         self.coordinator = coordinator
     }
 
-    public var body: some View {
+    public var content: some View {
         OnboardingView(viewModel: coordinator.viewModel)
             .sheet(
                 unwrapping: $coordinator.presenting,
