@@ -80,6 +80,7 @@ targets:
         dependencies:
             - target: Onboarding
             - target: Home
+            - target: Common
 
 
     # Onboarding

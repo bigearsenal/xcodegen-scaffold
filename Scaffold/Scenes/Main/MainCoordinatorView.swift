@@ -2,7 +2,7 @@ import Home
 import Onboarding
 import SwiftUI
 
-public struct MainView: View {
+public struct MainCoordinatorView: View {
     @StateObject private var viewModel: ContentViewModel = .init()
 
     public init() {}
@@ -21,5 +21,5 @@ public struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    MainCoordinatorView()
 }
