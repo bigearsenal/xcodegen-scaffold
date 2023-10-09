@@ -15,6 +15,7 @@ public struct Presenting<Destination> {
 }
 
 /// Coordinator type to manage Present navigation
+@MainActor
 public protocol PresentingCoordinator: Coordinator {
     /// Type that represents the presenting destination
     associatedtype Destination

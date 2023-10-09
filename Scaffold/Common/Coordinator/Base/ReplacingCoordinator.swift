@@ -1,6 +1,7 @@
 import Foundation
 
 /// Coordinator type to manage Push Navigation
+@MainActor
 public protocol ReplacingCoordinator: Coordinator {
     /// Type that represents Destination in Push navigation
     associatedtype View

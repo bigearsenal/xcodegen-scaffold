@@ -1,6 +1,7 @@
 import Foundation
 
 /// Coordinator type to manage Tab Navigation
+@MainActor
 public protocol TabCoordinator: Coordinator {
     /// Type that represents tab in coordinator
     associatedtype Tab

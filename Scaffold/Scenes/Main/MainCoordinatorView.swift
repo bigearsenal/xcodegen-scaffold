@@ -3,23 +3,24 @@ import Onboarding
 import SwiftUI
 
 public struct MainCoordinatorView: View {
-    @StateObject private var viewModel: MainViewModel = .init()
-
-    public init() {}
+    @ObservedObject var coordinator: MainCoordinator
 
     public var body: some View {
-        if viewModel.isLoggedIn {
+        switch coordinator.currentView {
+        case .home:
             HomeView {
-                viewModel.isLoggedIn = false
+                coordinator.currentView = .onboarding
             }
-        } else {
+        case .onboarding:
             OnboardingView {
-                viewModel.isLoggedIn = true
+                coordinator.currentView = .home
             }
+        case .none:
+            EmptyView()
         }
     }
 }
 
 #Preview {
-    MainCoordinatorView()
+    MainCoordinatorView(coordinator: .init())
 }
