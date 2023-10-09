@@ -15,6 +15,10 @@ class MainCoordinator: ReplacingCoordinator {
 
     // MARK: - Initializer
 
+    init() {
+        currentView = .onboarding
+    }
+
     func backToRoot() {
         // do nothing
     }
