@@ -3,7 +3,7 @@ import Onboarding
 import SwiftUI
 
 public struct MainView: View {
-    @StateObject private var viewModel: ContentViewModel = .init()
+    @StateObject private var viewModel: MainViewModel = .init()
 
     public init() {}
 
