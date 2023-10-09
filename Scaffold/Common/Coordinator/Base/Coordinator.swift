@@ -1,7 +1,7 @@
 import Foundation
 
 /// Coordinator that manages navigation state
-public protocol Coordinator {
+public protocol Coordinator: ObservableObject {
     /// Unique id of a Coordinator
     var id: String { get }
 

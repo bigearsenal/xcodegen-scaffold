@@ -1,7 +1,7 @@
 import Foundation
 
 /// Coordinator type to manage Tab Navigation
-public protocol TabCoordinator: AnyObject, Coordinator {
+public protocol TabCoordinator: Coordinator {
     /// Type that represents tab in coordinator
     associatedtype Tab
 

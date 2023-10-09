@@ -1,7 +1,7 @@
 import Foundation
 
 /// Coordinator type to manage Push Navigation
-public protocol PushingCoordinator: AnyObject, Coordinator {
+public protocol PushingCoordinator: Coordinator {
     /// Type that represents Destination in Push navigation
     associatedtype Destination
 
