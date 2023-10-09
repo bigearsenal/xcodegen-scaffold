@@ -31,5 +31,6 @@ public struct OnboardingCoordinatorView: View {
 }
 
 #Preview {
-    OnboardingCoordinatorView(coordinator: .init())
+    let coordinator = OnboardingCoordinator()
+    return OnboardingCoordinatorView(coordinator: coordinator)
 }
