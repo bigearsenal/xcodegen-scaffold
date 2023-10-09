@@ -3,6 +3,9 @@ name: Scaffold
 packages:
     ScaffoldKit:
         path: ./Packages/ScaffoldKit
+    SwiftUINavigation:
+        url: https://github.com/pointfreeco/swiftui-navigation
+        from: 1.0.0
 
 options:
     bundleIdPrefix: info.bigears.Scaffold
@@ -71,6 +74,9 @@ targets:
         templates:
             - Module
         sources: [Scaffold/Common]
+        dependencies:
+            - package: SwiftUINavigation
+              product: SwiftUINavigation
 
     # Main
     Main:

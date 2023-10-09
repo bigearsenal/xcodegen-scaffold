@@ -1,6 +1,7 @@
 import Login
 import SignUp
 import SwiftUI
+import SwiftUINavigation
 
 public struct OnboardingCoordinatorView: View {
     // MARK: - Properties
@@ -15,18 +16,20 @@ public struct OnboardingCoordinatorView: View {
 
     public var body: some View {
         OnboardingView(viewModel: coordinator.viewModel)
-            .sheet(item: $coordinator.presenting) { scene in
-                switch scene {
-                case .login:
-                    LoginView {
-//                    viewModel.onLoggedIn()
-                    }
-                case .signUp:
-                    SignUpView {
-//                    viewModel.onLoggedIn()
-                    }
+            .sheet(
+                unwrapping: $coordinator.presenting,
+                case: /OnboardingDestination.login,
+                content: { _ in
+                    LoginView {}
                 }
-            }
+            )
+            .fullScreenCover(
+                unwrapping: $coordinator.presenting,
+                case: /OnboardingDestination.signUp,
+                content: { _ in
+                    SignUpView {}
+                }
+            )
     }
 }
 
