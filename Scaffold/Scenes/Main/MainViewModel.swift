@@ -1,6 +1,6 @@
 import Foundation
 
 @MainActor
-final class ContentViewModel: ObservableObject {
+final class MainViewModel: ObservableObject {
     @Published var isLoggedIn = false
 }
