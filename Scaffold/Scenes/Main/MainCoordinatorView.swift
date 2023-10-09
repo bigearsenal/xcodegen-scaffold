@@ -5,6 +5,10 @@ import SwiftUI
 public struct MainCoordinatorView: View {
     @ObservedObject var coordinator: MainCoordinator
 
+    public init(coordinator: MainCoordinator) {
+        self.coordinator = coordinator
+    }
+
     public var body: some View {
         switch coordinator.currentView {
         case .home:
@@ -12,9 +16,7 @@ public struct MainCoordinatorView: View {
                 coordinator.currentView = .onboarding
             }
         case .onboarding:
-            OnboardingView {
-                coordinator.currentView = .home
-            }
+            OnboardingCoordinatorView(coordinator: .init())
         case .none:
             EmptyView()
         }

@@ -1,22 +1,18 @@
 import Foundation
 
-enum NavigatableScene: Int, Identifiable {
-    var id: Int { rawValue }
-
-    case login = 0
-    case signUp
-}
-
+@MainActor
 final class OnboardingViewModel: ObservableObject {
-    // MARK: - Properties
+    private unowned let coordinator: OnboardingCoordinator
 
-    let onLoggedIn: () -> Void
+    init(coordinator: OnboardingCoordinator) {
+        self.coordinator = coordinator
+    }
 
-    @Published var currentScene: NavigatableScene?
+    func openLogin() {
+        coordinator.present(destination: .login)
+    }
 
-    // MARK: - Initializers
-
-    init(onLoggedIn: @escaping () -> Void) {
-        self.onLoggedIn = onLoggedIn
+    func openSignUp() {
+        coordinator.present(destination: .signUp)
     }
 }

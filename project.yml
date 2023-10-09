@@ -91,6 +91,7 @@ targets:
         dependencies:
             - target: Login
             - target: SignUp
+            - target: Common
 
     # Onboarding/Login
     Login:

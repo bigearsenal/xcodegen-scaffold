@@ -5,7 +5,7 @@ import SwiftUI
 struct ScaffoldApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainCoordinatorView(coordinator: .init())
         }
     }
 }

@@ -1,25 +1,25 @@
 import Common
 import Foundation
 
-enum MainNavigatableView {
+public enum MainNavigatableView {
     case home
     case onboarding
 }
 
 @MainActor
-class MainCoordinator: ReplacingCoordinator {
+public class MainCoordinator: ReplacingCoordinator {
     // MARK: - Properties
 
-    let id: String = UUID().uuidString
-    @Published var currentView: MainNavigatableView?
+    public let id: String = UUID().uuidString
+    @Published public var currentView: MainNavigatableView?
 
     // MARK: - Initializer
 
-    init() {
+    public init() {
         currentView = .onboarding
     }
 
-    func backToRoot() {
+    public func backToRoot() {
         // do nothing
     }
 }
