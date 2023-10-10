@@ -3,6 +3,9 @@ name: Scaffold
 packages:
     ScaffoldKit:
         path: ./Packages/ScaffoldKit
+    ComposableNavigator:
+        url: https://github.com/bigearsenal/swift-composable-navigator
+        branch: main
 
 options:
     bundleIdPrefix: info.bigears.Scaffold
@@ -71,6 +74,11 @@ targets:
         templates:
             - Module
         sources: [Scaffold/Common]
+        dependencies:
+            - package: ComposableNavigator
+              product: ComposableNavigator
+            - package: ComposableNavigator
+              product: ComposableDeeplinking
 
     # Main
     Main:
@@ -114,4 +122,5 @@ targets:
         sources: [Scaffold/Scenes/Home]
         dependencies:
             - target: ScaffoldUI
+            - target: Common
         
