@@ -5,7 +5,7 @@ packages:
         path: ./Packages/ScaffoldKit
     ComposableNavigator:
         url: https://github.com/bigearsenal/swift-composable-navigator
-        branch: main
+        branch: feature/remove-tca
 
 options:
     bundleIdPrefix: info.bigears.Scaffold
@@ -110,8 +110,9 @@ targets:
             - Module
         sources: [Scaffold/Scenes/Onboarding/Login]
         dependencies:
-            - target: ScaffoldUI
-            - target: Common
+            # - target: ScaffoldUI
+            # - target: Common
+            - target: SignUp
 
     # Onboarding/SignUp
     SignUp:
