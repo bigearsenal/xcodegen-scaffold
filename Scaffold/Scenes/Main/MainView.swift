@@ -10,7 +10,7 @@ struct MainView: View {
     var body: some View {
         VStack {
             if viewModel.isLoggedIn {
-                HomeView {}
+                HomeView()
             } else {
                 Button("Login or SignUp") {
                     navigator.go(

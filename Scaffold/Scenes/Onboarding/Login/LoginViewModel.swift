@@ -1,3 +1,4 @@
+import Common
 import Foundation
 
 final class LoginViewModel: ObservableObject {
@@ -6,9 +7,6 @@ final class LoginViewModel: ObservableObject {
     func login() async {
         // Do something here
 
-        // Handle
-        await MainActor.run {
-//            onLoggedIn()
-        }
+        loggedInSubject.send(true)
     }
 }

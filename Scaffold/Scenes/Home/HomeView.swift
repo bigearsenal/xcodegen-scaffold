@@ -3,8 +3,8 @@ import SwiftUI
 public struct HomeView: View {
     @StateObject private var viewModel: HomeViewModel
 
-    public init(onLoggedOut: @escaping () -> Void) {
-        _viewModel = .init(wrappedValue: .init(onLoggedOut: onLoggedOut))
+    public init() {
+        _viewModel = .init(wrappedValue: .init())
     }
 
     public var body: some View {
@@ -25,5 +25,5 @@ public struct HomeView: View {
 }
 
 #Preview {
-    HomeView {}
+    HomeView()
 }
