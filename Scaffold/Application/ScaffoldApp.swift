@@ -28,7 +28,14 @@ struct ScaffoldApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView()
+            Root(dataSource: dataSource, pathBuilder: MainScreen.Builder())
+                .onOpenURL { url in
+                    // the matching parameter needs to match the URL
+                    // scheme defined in the application's project file
+                    if let deeplink = Deeplink(url: url, matching: "example") {
+                        deeplinkHandler.handle(deeplink: deeplink)
+                    }
+                }
         }
     }
 }

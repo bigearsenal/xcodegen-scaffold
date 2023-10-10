@@ -2,12 +2,10 @@ import Home
 import Onboarding
 import SwiftUI
 
-public struct MainView: View {
+struct MainView: View {
     @StateObject private var viewModel: MainViewModel = .init()
 
-    public init() {}
-
-    public var body: some View {
+    var body: some View {
         if viewModel.isLoggedIn {
             HomeView {
                 viewModel.isLoggedIn = false

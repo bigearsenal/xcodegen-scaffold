@@ -10,6 +10,8 @@ public struct MainScreen: Screen {
     }
 
     public struct Builder: NavigationTree {
+        public init() {}
+
         public var builder: some PathBuilder {
             Screen(
                 MainScreen.self,
