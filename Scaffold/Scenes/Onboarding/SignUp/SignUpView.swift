@@ -1,13 +1,9 @@
 import SwiftUI
 
-public struct SignUpView: View {
-    @StateObject private var viewModel: SignUpViewModel
+struct SignUpView: View {
+    @StateObject private var viewModel: SignUpViewModel = .init()
 
-    public init(onSignedUp: @escaping () -> Void) {
-        _viewModel = .init(wrappedValue: .init(onSignedUp: onSignedUp))
-    }
-
-    public var body: some View {
+    var body: some View {
         Button(action: {
             Task {
                 await viewModel.signUp()
@@ -19,5 +15,5 @@ public struct SignUpView: View {
 }
 
 #Preview {
-    SignUpView {}
+    SignUpView()
 }

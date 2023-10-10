@@ -1,11 +1,7 @@
 import SwiftUI
 
 public struct LoginView: View {
-    @StateObject private var viewModel: LoginViewModel
-
-    public init(onLoggedIn: @escaping () -> Void) {
-        _viewModel = .init(wrappedValue: .init(onLoggedIn: onLoggedIn))
-    }
+    @StateObject private var viewModel: LoginViewModel = .init()
 
     public var body: some View {
         Button(action: {
@@ -19,5 +15,5 @@ public struct LoginView: View {
 }
 
 #Preview {
-    LoginView {}
+    LoginView()
 }

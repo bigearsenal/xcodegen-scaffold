@@ -1,16 +1,6 @@
 import Foundation
 
 final class LoginViewModel: ObservableObject {
-    // MARK: - Properties
-
-    private var onLoggedIn: () -> Void
-
-    // MARK: - Initializer
-
-    init(onLoggedIn: @escaping () -> Void) {
-        self.onLoggedIn = onLoggedIn
-    }
-
     // MARK: - Methods
 
     func login() async {
@@ -18,7 +8,7 @@ final class LoginViewModel: ObservableObject {
 
         // Handle
         await MainActor.run {
-            onLoggedIn()
+//            onLoggedIn()
         }
     }
 }

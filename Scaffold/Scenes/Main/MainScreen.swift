@@ -1,6 +1,7 @@
 import Common
 import ComposableNavigator
 import Foundation
+import Onboarding
 
 public struct MainScreen: Screen {
     public let presentationStyle: ScreenPresentationStyle
@@ -15,10 +16,10 @@ public struct MainScreen: Screen {
         public var builder: some PathBuilder {
             Screen(
                 MainScreen.self,
-                content: { MainView() }
-//                nesting: {
-//                    DetailScreen.Builder()
-//                }
+                content: { MainView() },
+                nesting: {
+                    OnboardingScreen.Builder()
+                }
             )
         }
     }
