@@ -20,7 +20,7 @@ struct ScaffoldApp: App {
 
         deeplinkHandler = DeeplinkHandler(
             navigator: navigator,
-            parser: DeeplinkParser.exampleApp
+            parser: DeeplinkParser.scaffoldApp
         )
     }
 
@@ -32,7 +32,7 @@ struct ScaffoldApp: App {
                 .onOpenURL { url in
                     // the matching parameter needs to match the URL
                     // scheme defined in the application's project file
-                    if let deeplink = Deeplink(url: url, matching: "example") {
+                    if let deeplink = Deeplink(url: url, matching: "scaffolddl") {
                         deeplinkHandler.handle(deeplink: deeplink)
                     }
                 }

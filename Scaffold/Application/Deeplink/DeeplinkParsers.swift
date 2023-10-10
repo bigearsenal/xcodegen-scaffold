@@ -7,7 +7,7 @@ public extension DeeplinkParser {
     /// Supported deeplinks:
     /// * example://home/settings
     /// * example://detail?id={id}
-    static let exampleApp: DeeplinkParser = .anyOf(
-        .detailSettings
+    static let scaffoldApp: DeeplinkParser = .anyOf(
+        .signUp
     )
 }
