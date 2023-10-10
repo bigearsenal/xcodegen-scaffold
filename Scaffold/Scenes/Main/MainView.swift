@@ -20,6 +20,9 @@ struct MainView: View {
                 }
             }
         }
+        .onReceive(viewModel.$isLoggedIn.dropFirst()) { _ in
+            navigator.replace(path: MainScreen().eraseToAnyScreen())
+        }
     }
 }
 

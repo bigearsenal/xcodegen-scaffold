@@ -1,3 +1,4 @@
+import Common
 import Foundation
 
 final class SignUpViewModel: ObservableObject {
@@ -5,10 +6,8 @@ final class SignUpViewModel: ObservableObject {
 
     func signUp() async {
         // Do something here
+//        try? await Task.sleep(nanoseconds: 1_000_000_000)
 
-        // Handle
-        await MainActor.run {
-//            onSignedUp()
-        }
+        loggedInSubject.send(true)
     }
 }

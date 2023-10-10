@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
     @StateObject private var viewModel: SignUpViewModel = .init()
 
     var body: some View {
