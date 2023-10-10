@@ -49,6 +49,11 @@ targets:
                 UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
                 NSAppTransportSecurity:
                     NSAllowsArbitraryLoads: true
+                CFBundleURLTypes:
+                  - CFBundleTypeRole: Editor
+                    CFBundleURLName: scaffolddl
+                    CFBundleURLSchemes:
+                      - "scaffolddl"
         settings:
             base:
                 MARKETING_VERSION: 1.0.0
