@@ -8,5 +8,6 @@ extension Resolver: ResolverRegistering {
             DeeplinkManagerImpl()
         }
         .implements(DeeplinkManager.self)
+        .scope(.application)
     }
 }
