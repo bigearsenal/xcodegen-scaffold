@@ -1,36 +1,37 @@
+import Combine
 import Foundation
 
-public class DeeplinkManager {
-    public enum DeeplinkTarget: Equatable {
-        case home
-        case details(reference: String)
-    }
+public protocol DeeplinkManager {
+    func manage(url: URL)
+}
 
-    public enum DeepLinkConstants {
-        static let scheme = "scaffolddl"
-        static let host = "com.scaffolddl"
-        static let detailsPath = "/details"
-        static let query = "id"
-    }
+public class DeeplinkManagerImpl: DeeplinkManager {
+    // MARK: - Properties
+
+    private let subject = CurrentValueSubject<DeeplinkTarget?, Never>(nil)
 
     public init() {}
 
-    public func manage(url: URL) -> DeeplinkTarget {
-        print(url)
-
+    public func manage(url: URL) {
         guard url.scheme == DeepLinkConstants.scheme,
               url.host == DeepLinkConstants.host,
               url.path == DeepLinkConstants.detailsPath,
               let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
               let queryItems = components.queryItems
-        else { return .home }
+        else {
+            subject.send(nil)
+            return
+        }
 
         let query = queryItems.reduce(into: [String: String]()) { result, item in
             result[item.name] = item.value
         }
 
-        guard let id = query[DeepLinkConstants.query] else { return .home }
+        guard let id = query[DeepLinkConstants.query] else {
+            subject.send(nil)
+            return
+        }
 
-        return .details(reference: id)
+        subject.send(.details(reference: id))
     }
 }
