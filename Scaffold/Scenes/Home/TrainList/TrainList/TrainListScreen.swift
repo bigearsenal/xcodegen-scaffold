@@ -2,7 +2,7 @@ import Common
 import ComposableNavigator
 import Foundation
 
-public struct ListScreen: Screen {
+public struct TrainListScreen: Screen {
     public let presentationStyle: ScreenPresentationStyle
 
     public init(presentationStyle: ScreenPresentationStyle = .push) {
@@ -14,8 +14,8 @@ public struct ListScreen: Screen {
 
         public var builder: some PathBuilder {
             Screen(
-                ListScreen.self,
-                content: { ListView() }
+                TrainListScreen.self,
+                content: { TrainListView() }
                 //                nesting: {
                 //                    DetailScreen.Builder()
                 //                }

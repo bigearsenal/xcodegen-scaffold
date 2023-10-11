@@ -20,7 +20,9 @@ options:
         - pattern: '^.*Onboarding$'
           order: [Onboarding, Login, SignUp]
         - pattern: '^.*Home$'
-          order: [Home, List, Settings]
+          order: [Home, TrainList, Settings]
+        - pattern: '^.*TrainList$'
+          order: [TrainList, TrainDetail, TrainCapacity]
         # - pattern: '^.*Features$'
         #   order: [Start, Sign In, Home, Quotes, Quote Detail, Settings]
     preGenCommand: rm -rf ~/Library/Developer/Xcode/DerivedData/Scaffold-* # clean build folder before xcodegen
@@ -131,18 +133,18 @@ targets:
             - Module
         sources: [Scaffold/Scenes/Home/Home]
         dependencies:
-            - target: List
+            - target: TrainList
 
-    # Home/List
-    List:
+    # Home/TrainList
+    TrainList:
         templates:
             - Module
-        sources: [Scaffold/Scenes/Home/List]
+        sources: [Scaffold/Scenes/Home/TrainList]
         dependencies:
             - target: ScaffoldUI
             - target: Common
 
-    # Home/List
+    # Home/Settings
     Settings:
         templates:
             - Module
