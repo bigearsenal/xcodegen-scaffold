@@ -1,5 +1,4 @@
 import ComposableDeeplinking
-import Main
 import Onboarding
 import SignUp
 
@@ -16,11 +15,8 @@ extension DeeplinkParser {
             }
 
             return [
-                MainScreen().eraseToAnyScreen(),
                 OnboardingScreen().eraseToAnyScreen(),
                 SignUpScreen().eraseToAnyScreen(),
-                //                DetailScreen(id: Int(id), train: nil).eraseToAnyScreen(),
-                //                CapacityScreen(capacity: nil, trainId: Int(id)).eraseToAnyScreen(),
             ]
         }
     )

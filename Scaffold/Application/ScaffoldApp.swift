@@ -1,7 +1,8 @@
 import Common
 import ComposableDeeplinking
 import ComposableNavigator
-import Main
+import Home
+import Onboarding
 import SwiftUI
 
 @main
@@ -15,7 +16,7 @@ struct ScaffoldApp: App {
     // MARK: - Initializer
 
     init() {
-        dataSource = .init(root: MainScreen())
+        dataSource = .init(root: Self.rootScreen)
         navigator = Navigator(dataSource: dataSource)
 
         deeplinkHandler = DeeplinkHandler(
@@ -28,7 +29,7 @@ struct ScaffoldApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Root(dataSource: dataSource, pathBuilder: MainScreen.Builder())
+            Root(dataSource: dataSource, pathBuilder: AppNavigationTree())
                 .onOpenURL { url in
                     // the matching parameter needs to match the URL
                     // scheme defined in the application's project file
@@ -36,6 +37,17 @@ struct ScaffoldApp: App {
                         deeplinkHandler.handle(deeplink: deeplink)
                     }
                 }
+                .onReceive(loggedInPublisher.dropFirst()) { _ in
+                    navigator.replace(path: Self.rootScreen)
+                }
         }
+    }
+
+    // MARK: - Helpers
+
+    private static var rootScreen: AnyScreen {
+        isLoggedIn ?
+            HomeScreen().eraseToAnyScreen() :
+            OnboardingScreen().eraseToAnyScreen()
     }
 }

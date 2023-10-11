@@ -1,6 +1,7 @@
 import Common
 import ComposableNavigator
 import Foundation
+import SignUp
 import SwiftUI
 
 public struct LoginScreen: Screen {
@@ -20,9 +21,9 @@ public struct LoginScreen: Screen {
             Screen(
                 LoginScreen.self,
                 content: { LoginView() }
-                //                nesting: {
-                //                    DetailScreen.Builder()
-                //                }
+//                nesting: {
+//                    DetailScreen.Builder()
+//                }
             )
         }
     }

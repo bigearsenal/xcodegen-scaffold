@@ -5,14 +5,32 @@ struct SignUpView: View {
     @Environment(\.currentScreen) private var currentScreen
     @StateObject private var viewModel: SignUpViewModel = .init()
 
+    @State private var showingAlert = false
+
     var body: some View {
-        Button(action: {
-            Task {
-                await viewModel.signUp()
+        VStack {
+            Button(action: {
+                Task {
+                    await viewModel.signUp()
+                }
+            }, label: {
+                Text("Sign up")
+            })
+
+            Button(
+                action: {
+                    showingAlert = true
+                },
+                label: {
+                    Text("Push another")
+                }
+            )
+        }
+        .alert("Important message", isPresented: $showingAlert) {
+            Button("OK", role: .cancel) {
+                showingAlert = false
             }
-        }, label: {
-            Text("Sign up")
-        })
+        }
     }
 }
 

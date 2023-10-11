@@ -16,7 +16,7 @@ options:
         - pattern: '^.*Scaffold'
           order: [Application, Common, Scenes, ScaffoldUI]
         - pattern: '^.*Scenes$'
-          order: [Main, Onboarding, Home]
+          order: [Onboarding, Home]
         - pattern: '^.*Onboarding$'
           order: [Onboarding, Login, SignUp]
         # - pattern: '^.*Features$'
@@ -68,7 +68,8 @@ targets:
             Release: Scaffold/Application/Config.xcconfig
         sources: [Scaffold/Application]
         dependencies:
-            - target: Main
+            - target: Onboarding
+            - target: Home
         
     ScaffoldUI:
         templates:
@@ -84,16 +85,6 @@ targets:
               product: ComposableNavigator
             - package: ComposableNavigator
               product: ComposableDeeplinking
-
-    # Main
-    Main:
-        templates:
-            - Module
-        sources: [Scaffold/Scenes/Main]
-        dependencies:
-            - target: Onboarding
-            - target: Home
-
 
     # Onboarding
     Onboarding:
