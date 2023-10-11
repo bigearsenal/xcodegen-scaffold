@@ -1,8 +1,10 @@
+import Combine
 import Common
 import ComposableDeeplinking
 import ComposableNavigator
 import Home
 import Onboarding
+import PinCode
 import SwiftUI
 
 @main
@@ -16,7 +18,7 @@ struct ScaffoldApp: App {
     // MARK: - Initializer
 
     init() {
-        dataSource = .init(root: Self.rootScreen)
+        dataSource = .init(root: rootScreen)
         navigator = Navigator(dataSource: dataSource)
 
         deeplinkHandler = DeeplinkHandler(
@@ -37,17 +39,26 @@ struct ScaffoldApp: App {
                         deeplinkHandler.handle(deeplink: deeplink)
                     }
                 }
-                .onReceive(loggedInPublisher.dropFirst()) { _ in
-                    navigator.replace(path: Self.rootScreen)
+                .onReceive(
+                    Publishers.Merge(
+                        loggedInPublisher.dropFirst(),
+                        pincodeAuthorizedPublisher.dropFirst()
+                    )
+                ) { _ in
+                    navigator.replace(path: rootScreen)
                 }
         }
     }
+}
 
-    // MARK: - Helpers
+// MARK: - Helpers
 
-    private static var rootScreen: AnyScreen {
-        isLoggedIn ?
-            HomeScreen().eraseToAnyScreen() :
-            OnboardingScreen().eraseToAnyScreen()
+private var rootScreen: AnyScreen {
+    if isLoggedIn {
+        return HomeScreen().eraseToAnyScreen()
+    } else if pincodeAuthorizedSubject.value {
+        return PinCodeScreen().eraseToAnyScreen()
+    } else {
+        return HomeScreen().eraseToAnyScreen()
     }
 }

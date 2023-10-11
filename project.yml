@@ -16,7 +16,7 @@ options:
         - pattern: '^.*Scaffold'
           order: [Application, Common, Scenes, ScaffoldUI]
         - pattern: '^.*Scenes$'
-          order: [Onboarding, Home]
+          order: [Onboarding, PinCode, Home]
         - pattern: '^.*Onboarding$'
           order: [Onboarding, Login, SignUp]
         # - pattern: '^.*Features$'
@@ -69,6 +69,7 @@ targets:
         sources: [Scaffold/Application]
         dependencies:
             - target: Onboarding
+            - target: PinCode
             - target: Home
         
     ScaffoldUI:
@@ -109,6 +110,15 @@ targets:
         templates:
             - Module
         sources: [Scaffold/Scenes/Onboarding/SignUp]
+        dependencies:
+            - target: ScaffoldUI
+            - target: Common
+
+    # PinCode
+    PinCode:
+        templates:
+            - Module
+        sources: [Scaffold/Scenes/PinCode]
         dependencies:
             - target: ScaffoldUI
             - target: Common
