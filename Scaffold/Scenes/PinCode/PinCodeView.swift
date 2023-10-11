@@ -9,11 +9,21 @@ struct PinCodeView: View {
 
     public var body: some View {
         VStack {
+            HStack {
+                Image(systemName: "circle.fill")
+                Image(systemName: "circle.fill")
+                Image(systemName: "circle")
+                Image(systemName: "circle")
+                Image(systemName: "circle")
+                Image(systemName: "circle")
+            }
+
             Button(action: {
                 viewModel.validatePinCode()
             }, label: {
                 Text("Enter PinCode")
             })
+            .padding(.top, 20)
         }
     }
 }
