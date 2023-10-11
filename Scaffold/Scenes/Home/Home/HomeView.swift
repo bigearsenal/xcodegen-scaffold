@@ -8,18 +8,22 @@ public struct HomeView: View {
     }
 
     public var body: some View {
-        VStack {
-            Image(.flower)
-                .resizable()
-                .frame(width: 200, height: 200)
-            Text("Hello!")
+        TabView {
+            Text("List")
+                .tabItem {
+                    Label("Menu", systemImage: "list.dash")
+                }
+
             Button(action: {
                 Task {
                     await viewModel.logout()
                 }
             }, label: {
-                Text("Log out")
+                Text("Logout")
             })
+            .tabItem {
+                Label("Order", systemImage: "square.and.pencil")
+            }
         }
     }
 }
