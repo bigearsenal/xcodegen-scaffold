@@ -4,7 +4,7 @@ import Stinsen
 import SwiftUI
 
 struct TrainListView: View {
-    @EnvironmentObject private var trainListCoordinator: TrainListCoordinator.Router
+    @EnvironmentObject private var coordinator: TrainListCoordinator.Router
 
     var body: some View {
         VStack {
@@ -12,7 +12,7 @@ struct TrainListView: View {
                 HStack {
                     Button(
                         action: {
-                            trainListCoordinator.route(to: \.trainDetail, train)
+                            coordinator.route(to: \.trainDetail, train)
                         },
                         label: { Text(train.name) }
                     )

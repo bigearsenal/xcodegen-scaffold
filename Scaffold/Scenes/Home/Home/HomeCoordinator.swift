@@ -47,7 +47,7 @@ public final class HomeCoordinator: TabCoordinatable {
     }
 
     @ViewBuilder func makeSettingsTab(isActive: Bool) -> some View {
-        Image(systemName: "folder" + (isActive ? ".fill" : ""))
-        Text("Todos")
+        Image(systemName: "gearshape" + (isActive ? ".fill" : ""))
+        Text("Settings")
     }
 }

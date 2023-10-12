@@ -25,6 +25,12 @@ struct TrainCapacityView: View {
             } else {
                 ProgressView()
             }
+
+            Button(action: {
+                coordinator.route(to: \.trainCapacity, (viewModel.capacity ?? 0) + 1)
+            }, label: {
+                Text("Button")
+            })
         }
         .task {
             try? await viewModel.load()

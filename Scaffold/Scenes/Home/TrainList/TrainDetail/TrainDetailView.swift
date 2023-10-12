@@ -3,7 +3,7 @@ import Stinsen
 import SwiftUI
 
 struct TrainDetailView: View {
-    @EnvironmentObject private var trainListCoordinator: TrainListCoordinator.Router
+    @EnvironmentObject private var coordinator: TrainListCoordinator.Router
     @StateObject private var viewModel: TrainDetailViewModel
 
     init(id: Int) {
@@ -21,7 +21,7 @@ struct TrainDetailView: View {
                     .padding()
                 Button(
                     action: {
-                        trainListCoordinator.route(to: \.trainCapacity, train.capacity)
+                        coordinator.route(to: \.trainCapacity, train.capacity)
                     },
                     label: { Text("Show capacity").foregroundColor(.red) }
                 )
