@@ -1,3 +1,4 @@
+import Common
 import Stinsen
 import SwiftUI
 
@@ -29,7 +30,13 @@ struct TrainCapacityView: View {
             Button(action: {
                 coordinator.route(to: \.trainCapacity, (viewModel.capacity ?? 0) + 1)
             }, label: {
-                Text("Button")
+                Text("Present modal")
+            })
+
+            Button(action: {
+                coordinator.route(to: \.trainDetail, trains[0])
+            }, label: {
+                Text("Push")
             })
         }
         .task {
