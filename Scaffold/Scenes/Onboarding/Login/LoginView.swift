@@ -1,23 +1,35 @@
+import SignUp
 import SwiftUI
 
 public struct LoginView: View {
-    @StateObject private var viewModel: LoginViewModel
+    @StateObject private var viewModel: LoginViewModel = .init()
 
-    public init(onLoggedIn: @escaping () -> Void) {
-        _viewModel = .init(wrappedValue: .init(onLoggedIn: onLoggedIn))
-    }
+    @State private var showingAlert = false
+
+    public init() {}
 
     public var body: some View {
-        Button(action: {
-            Task {
-                await viewModel.login()
-            }
-        }, label: {
-            Text("Login")
+        VStack {
+            Button(action: {
+                Task {
+                    await viewModel.login()
+                }
+            }, label: {
+                Text("Login")
+            })
+
+            Button(action: {
+                showingAlert = true
+            }, label: {
+                Text("Show alert")
+            })
+        }
+        .fullScreenCover(isPresented: $showingAlert, content: {
+            Text("FullScreen")
         })
     }
 }
 
 #Preview {
-    LoginView {}
+    LoginView()
 }

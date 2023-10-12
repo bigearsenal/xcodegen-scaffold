@@ -1,24 +1,13 @@
+import Common
 import Foundation
 
 final class SignUpViewModel: ObservableObject {
-    // MARK: - Properties
-
-    private var onSignedUp: () -> Void
-
-    // MARK: - Initializer
-
-    init(onSignedUp: @escaping () -> Void) {
-        self.onSignedUp = onSignedUp
-    }
-
     // MARK: - Methods
 
     func signUp() async {
         // Do something here
+//        try? await Task.sleep(nanoseconds: 1_000_000_000)
 
-        // Handle
-        await MainActor.run {
-            onSignedUp()
-        }
+        loggedInSubject.send(true)
     }
 }
