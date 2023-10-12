@@ -5,6 +5,8 @@ import SwiftUI
 struct TrainCapacityView: View {
     @EnvironmentObject private var coordinator: TrainListCoordinator.Router
     @StateObject private var viewModel: TrainCapacityViewModel
+    @State private var showingAlert = false
+    @State private var isConfirming = false
 
     init(capacity: Int) {
         _viewModel = .init(wrappedValue: .init(capacity: capacity))
@@ -38,7 +40,41 @@ struct TrainCapacityView: View {
             }, label: {
                 Text("Push")
             })
+
+            Button(action: {
+                showingAlert = true
+            }, label: {
+                Text("Custom Alert")
+            })
+
+            Button(action: {
+                isConfirming = true
+            }, label: {
+                Text("ConfirmationDialog")
+            })
         }
+        .alert(
+            "Sth",
+            isPresented: $showingAlert,
+            actions: {
+                Button {
+                    showingAlert = false
+                } label: {
+                    Text("OK")
+                }
+            }
+        )
+        .confirmationDialog(
+            "Sth",
+            isPresented: $isConfirming,
+            actions: {
+                Button {
+                    isConfirming = false
+                } label: {
+                    Text("OK")
+                }
+            }
+        )
         .task {
             try? await viewModel.load()
         }
