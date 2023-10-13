@@ -132,6 +132,7 @@ targets:
         sources: [Scaffold/Scenes/Home/Home]
         dependencies:
             - target: TrainList
+            - target: Settings
 
     # Home/TrainList
     TrainList:
