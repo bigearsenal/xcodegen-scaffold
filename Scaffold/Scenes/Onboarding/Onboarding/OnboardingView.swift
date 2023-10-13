@@ -6,7 +6,7 @@ import SwiftUI
 struct OnboardingView: View {
     // MARK: - Properties
 
-    @EnvironmentObject private var coordinator: OnboardingCoordinator.Router
+    @EnvironmentObject private var router: OnboardingCoordinator.Router
     @StateObject private var viewModel: OnboardingViewModel = .init()
 
     // MARK: - Initializer
@@ -20,13 +20,13 @@ struct OnboardingView: View {
             Text("Login or Sign up to continue")
 
             Button(action: {
-                coordinator.route(to: \.login)
+                router.route(to: \.login)
             }, label: {
                 Text("Login")
             })
 
             Button(action: {
-                coordinator.route(to: \.signUp)
+                router.route(to: \.signUp)
             }, label: {
                 Text("Sign up")
             })

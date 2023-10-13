@@ -54,7 +54,7 @@ final class AppCoordinator: NavigationCoordinatable {
             .onOpenURL(perform: { url in
                 // Deeplink for home
 
-                if let coordinator = self.hasRoot(\.home) as? HomeCoordinator {
+                if let coordinator = self.hasRoot(\.home) {
                     do {
                         let deepLink = try DeepLink(url: url)
                         self.popToRoot()
@@ -64,7 +64,6 @@ final class AppCoordinator: NavigationCoordinatable {
                                 .focusFirst(\.settings)
                                 .child
                                 .popToRoot()
-                                
 
                             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
                                 settingsCoordinator

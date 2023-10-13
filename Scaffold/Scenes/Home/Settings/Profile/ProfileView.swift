@@ -1,7 +1,10 @@
 import Common
+import Stinsen
 import SwiftUI
 
 struct ProfileView: View {
+    @EnvironmentObject private var router: SettingsCoordinator.Router
+
     var body: some View {
         VStack {
             Button(action: {
@@ -10,13 +13,18 @@ struct ProfileView: View {
                 Text("Log out")
             })
         }
-        .navigationBarItems(
-            trailing: Button(
-                action: {},
-                label: { Image(systemName: "xmark") }
+        .toolbar {
+            Button(
+                action: {
+                    router.popLast()
+                },
+                label: {
+                    Text("Cancel")
+                }
             )
-        )
-        .navigationTitle(Text("Capacity"))
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(Text("Profile"))
     }
 }
 

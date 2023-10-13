@@ -3,7 +3,7 @@ import Stinsen
 import SwiftUI
 
 struct TrainCapacityView: View {
-    @EnvironmentObject private var coordinator: TrainListCoordinator.Router
+    @EnvironmentObject private var router: TrainListCoordinator.Router
     @StateObject private var viewModel: TrainCapacityViewModel
     @State private var showingAlert = false
     @State private var isConfirming = false
@@ -30,13 +30,13 @@ struct TrainCapacityView: View {
             }
 
             Button(action: {
-                coordinator.route(to: \.trainCapacity, (viewModel.capacity ?? 0) + 1)
+                router.route(to: \.trainCapacity, (viewModel.capacity ?? 0) + 1)
             }, label: {
                 Text("Present modal")
             })
 
             Button(action: {
-                coordinator.route(to: \.trainDetail, trains[0])
+                router.route(to: \.trainDetail, trains[0])
             }, label: {
                 Text("Push")
             })

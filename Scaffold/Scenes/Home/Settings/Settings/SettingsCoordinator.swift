@@ -18,9 +18,7 @@ public final class SettingsCoordinator: NavigationCoordinatable {
         SettingsView()
     }
 
-    @ViewBuilder func makeProfile() -> some View {
-        NavigationStack {
-            ProfileView()
-        }
+    func makeProfile() -> NavigationViewCoordinator<ProfileCoordinator> {
+        .init(.init())
     }
 }
