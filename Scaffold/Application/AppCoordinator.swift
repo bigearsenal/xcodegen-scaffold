@@ -50,6 +50,7 @@ final class AppCoordinator: NavigationCoordinatable {
     // MARK: - Customize
 
     public func customize(_ view: AnyView) -> some View {
+        // To test deeplink: `xcrun simctl openurl booted "scaffolddl://settings"`
         view
             .onOpenURL(perform: { url in
                 // Deeplink for home

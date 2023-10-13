@@ -19,7 +19,7 @@ struct ProfileView: View {
                     router.popLast()
                 },
                 label: {
-                    Text("Cancel")
+                    Text("Close")
                 }
             )
         }
