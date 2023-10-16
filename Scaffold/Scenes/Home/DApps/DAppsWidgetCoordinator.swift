@@ -14,6 +14,6 @@ public final class DAppsWidgetCoordinator: NavigationCoordinatable {
     }
 
     @ViewBuilder func makeStart() -> some View {
-        DAppsWidgetView()
+        DAppsWidgetView(viewModel: .init(widgetsManager: MockWidgetsManager()))
     }
 }

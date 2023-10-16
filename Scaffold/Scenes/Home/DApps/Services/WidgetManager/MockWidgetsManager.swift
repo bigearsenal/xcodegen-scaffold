@@ -6,6 +6,12 @@ final class MockWidgetsManager: WidgetsManager {
     var widgetsPublisher: AnyPublisher<[any Widget], Never> {
         Just([
             AccountWidget(),
+            AssetsWidget(),
+            WaitingTransactionsWidget(),
+            BinanceWidget(),
+            EthereumWidget(),
+            SolanaWidget(),
+            BitcoinWidget(),
         ])
         .eraseToAnyPublisher()
     }
