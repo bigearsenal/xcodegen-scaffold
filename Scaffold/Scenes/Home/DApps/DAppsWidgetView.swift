@@ -3,6 +3,7 @@ import SwiftUI
 
 struct DAppsWidgetView: View {
     @StateObject var viewModel: DAppsWidgetViewModel
+    @State private var draggingItem: String?
 
     var body: some View {
         ScrollView {
@@ -41,16 +42,16 @@ struct DAppsWidgetView: View {
     @ViewBuilder private func createWidget(_ widget: any Widget) -> some View {
         let view = widget.gridCellColumns(widget.type == .fullRow ? 2 : 1)
         AnyView(view)
-//            // Draggable
-//            .draggable(widget) {
-//                // Custom preview view
-//                RoundedRectangle(cornerRadius: 10)
-//                    .fill(.ultraThinMaterial)
-//                    .frame(width: 1, height: 1)
-//                    .onAppear {
-//                        draggingItem = widget
-//                    }
-//            }
+            // Draggable
+            .draggable(widget.id) {
+                // Custom preview view
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(.ultraThinMaterial)
+                    .frame(width: 1, height: 1)
+                    .onAppear {
+                        draggingItem = widget.id
+                    }
+            }
     }
 
     // MARK: - Helpers
