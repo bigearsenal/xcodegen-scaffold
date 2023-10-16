@@ -27,7 +27,36 @@ struct DAppsWidgetView: View {
     }
 
     @ViewBuilder private var widgetRows: some View {
-        let array = Array(zip(viewModel.widgets.indices, viewModel.widgets))
+        let array = mapWidgetsToRows()
+
+        ForEach(Array(zip(array.indices, array)), id: \.0) { _, widgets in
+            GridRow {
+                ForEach(widgets, id: \.id) { widget in
+                    createWidget(widget)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder private func createWidget(_ widget: any Widget) -> some View {
+        let view = widget.gridCellColumns(widget.type == .fullRow ? 2 : 1)
+        AnyView(view)
+//            // Draggable
+//            .draggable(widget) {
+//                // Custom preview view
+//                RoundedRectangle(cornerRadius: 10)
+//                    .fill(.ultraThinMaterial)
+//                    .frame(width: 1, height: 1)
+//                    .onAppear {
+//                        draggingItem = widget
+//                    }
+//            }
+    }
+
+    // MARK: - Helpers
+
+    private func mapWidgetsToRows() -> [[any Widget]] {
+        Array(zip(viewModel.widgets.indices, viewModel.widgets))
             .reduce(into: [[any Widget]]()) { result, element in
                 print(element.1.id)
                 print(result)
@@ -69,14 +98,6 @@ struct DAppsWidgetView: View {
                     }
                 }
             }
-
-        ForEach(Array(zip(array.indices, array)), id: \.0) { _, widgets in
-            GridRow {
-                ForEach(widgets, id: \.id) {
-                    AnyView($0.gridCellColumns($0.type == .fullRow ? 2 : 1))
-                }
-            }
-        }
     }
 }
 
