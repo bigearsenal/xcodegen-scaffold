@@ -73,7 +73,7 @@ struct DAppsWidgetView: View {
         ForEach(Array(zip(array.indices, array)), id: \.0) { _, widgets in
             GridRow {
                 ForEach(widgets, id: \.id) {
-                    AnyView($0)
+                    AnyView($0.gridCellColumns($0.type == .fullRow ? 2 : 1))
                 }
             }
         }
