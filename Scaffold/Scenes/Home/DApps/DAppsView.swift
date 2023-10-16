@@ -1,17 +1,7 @@
-//
-//  NewContentView.swift
-//  dWidget
-//
-//  Created by Giang Long Tran on 12.10.2023.
-//
-
+import Common
 import SwiftUI
 
-class BundleFacade {
-    static var module: Bundle { Bundle(for: Self.self) }
-}
-
-struct HomeView: View {
+struct DAppsView: View {
     var body: some View {
         ScrollView {
             HStack {
@@ -50,7 +40,7 @@ struct HomeView: View {
                 .gridCellColumns(2)
 
                 GridRow {
-                    WebWidgetContent(url: BundleFacade.module
+                    WebWidgetContent(url: Bundle.module
                         .url(forResource: "binance-widget", withExtension: "html")!)
                         .allowsHitTesting(false)
                         .frame(height: 50)
@@ -58,25 +48,25 @@ struct HomeView: View {
                 }
                 .gridCellColumns(2)
 
-//                GridRow {
-//                    WebWidgetContent(url: Bundle.main.url(forResource: "eth-diagram", withExtension: "html")!)
-//                        .allowsHitTesting(false)
-//                        .frame(height: 200)
-//                        .cardWithoutPadding(title: "Cryptohopper")
-//
-//                    WebWidgetContent(url: Bundle.main.url(forResource: "sol-diagram", withExtension: "html")!)
-//                        .allowsHitTesting(false)
-//                        .frame(height: 200)
-//                        .cardWithoutPadding(title: "Cryptohopper")
-//                }
-//
-//                GridRow {
-//                    WebWidgetContent(url: Bundle.main.url(forResource: "btc-diagram", withExtension: "html")!)
-//                        // .allowsHitTesting(false)
-//                            .medium()
-//                            .cardWithoutPadding(title: "Cryptohopper")
-//                }
-//                .gridCellColumns(2)
+                GridRow {
+                    WebWidgetContent(url: Bundle.module.url(forResource: "eth-diagram", withExtension: "html")!)
+                        .allowsHitTesting(false)
+                        .frame(height: 200)
+                        .cardWithoutPadding(title: "Cryptohopper")
+
+                    WebWidgetContent(url: Bundle.module.url(forResource: "sol-diagram", withExtension: "html")!)
+                        .allowsHitTesting(false)
+                        .frame(height: 200)
+                        .cardWithoutPadding(title: "Cryptohopper")
+                }
+
+                GridRow {
+                    WebWidgetContent(url: Bundle.module.url(forResource: "btc-diagram", withExtension: "html")!)
+                        // .allowsHitTesting(false)
+                        .medium()
+                        .cardWithoutPadding(title: "Cryptohopper")
+                }
+                .gridCellColumns(2)
             }
             .padding(.horizontal, 8)
             .background(
@@ -93,5 +83,17 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    DAppsView()
+}
+
+// MARK: - Private
+
+private extension Bundle {
+    static var module: Bundle {
+        _Bundle.module
+    }
+
+    private class _Bundle {
+        static var module: Bundle { Bundle(for: Self.self) }
+    }
 }
