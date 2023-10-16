@@ -84,7 +84,9 @@ struct DAppsWidgetView: View {
 }
 
 #Preview {
-    DAppsWidgetView()
+    NavigationStack {
+        DAppsWidgetView()
+    }
 }
 
 // MARK: - Private
