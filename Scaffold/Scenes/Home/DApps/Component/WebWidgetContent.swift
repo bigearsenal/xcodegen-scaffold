@@ -1,10 +1,3 @@
-//
-//  WebWidget.swift
-//  dWidget
-//
-//  Created by Giang Long Tran on 15.09.2023.
-//
-
 import SwiftUI
 import WebKit
 
@@ -29,9 +22,9 @@ struct WebWidgetContent: UIViewRepresentable {
         webView.backgroundColor = UIColor.clear
         webView.scrollView.backgroundColor = UIColor.clear
         webView.scrollView.isScrollEnabled = false
-        
+
         webView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        webView.scrollView.contentInsetAdjustmentBehavior = .never;
+        webView.scrollView.contentInsetAdjustmentBehavior = .never
 
         // webView.setValue(true, forKey: "drawsTransparentBackground")
 

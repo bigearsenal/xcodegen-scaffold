@@ -1,10 +1,3 @@
-//
-//  Widget.swift
-//  Home
-//
-//  Created by Giang Long Tran on 13.10.2023.
-//
-
 import SwiftUI
 
 extension View {
@@ -25,7 +18,7 @@ extension View {
                 .shadow(color: .black, radius: 50)
         }
     }
-    
+
     func cardWithoutPadding(title: String = "Missing title") -> some View {
         VStack {
             self
@@ -33,7 +26,7 @@ extension View {
                     minWidth: 0,
                     maxWidth: .infinity
                 )
-            
+
                 .background(.thinMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
 
@@ -43,7 +36,7 @@ extension View {
                 .shadow(color: .black, radius: 50)
         }
     }
-    
+
     func medium() -> some View {
         frame(height: 200)
     }
