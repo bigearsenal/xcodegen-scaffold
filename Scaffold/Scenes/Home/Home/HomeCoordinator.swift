@@ -1,3 +1,4 @@
+import DApps
 import Foundation
 import Settings
 import Stinsen
@@ -9,6 +10,7 @@ public final class HomeCoordinator: TabCoordinatable {
 
     public var child = TabChild(
         startingItems: [
+            \HomeCoordinator.dAppsWidget,
             \HomeCoordinator.trainList,
             \HomeCoordinator.settings,
         ]
@@ -16,6 +18,7 @@ public final class HomeCoordinator: TabCoordinatable {
 
     // MARK: - Routes
 
+    @Route(tabItem: makeDAppsWidgetTab) private var dAppsWidget = makeDAppsWidget
     @Route(tabItem: makeTrainListTab) private var trainList = makeTrainList
     @Route(tabItem: makeSettingsTab) public var settings = makeSettings
 
@@ -29,24 +32,34 @@ public final class HomeCoordinator: TabCoordinatable {
 
     // MARK: - Builders
 
-    // TrainList
-
-    func makeTrainList() -> NavigationViewCoordinator<TrainListCoordinator> {
-        .init(TrainListCoordinator())
+    // DAppsWidget
+    private func makeDAppsWidget() -> NavigationViewCoordinator<DAppsWidgetCoordinator> {
+        .init(.init())
     }
 
-    @ViewBuilder func makeTrainListTab(isActive: Bool) -> some View {
+    @ViewBuilder private func makeDAppsWidgetTab(isActive: Bool) -> some View {
         Image(systemName: "house" + (isActive ? ".fill" : ""))
         Text("Home")
     }
 
+    // TrainList
+
+    private func makeTrainList() -> NavigationViewCoordinator<TrainListCoordinator> {
+        .init(TrainListCoordinator())
+    }
+
+    @ViewBuilder private func makeTrainListTab(isActive: Bool) -> some View {
+        Image(systemName: "location" + (isActive ? ".fill" : ""))
+        Text("Train")
+    }
+
     // Settings
 
-    func makeSettings() -> NavigationViewCoordinator<SettingsCoordinator> {
+    private func makeSettings() -> NavigationViewCoordinator<SettingsCoordinator> {
         NavigationViewCoordinator(SettingsCoordinator())
     }
 
-    @ViewBuilder func makeSettingsTab(isActive: Bool) -> some View {
+    @ViewBuilder private func makeSettingsTab(isActive: Bool) -> some View {
         Image(systemName: "gearshape" + (isActive ? ".fill" : ""))
         Text("Settings")
     }

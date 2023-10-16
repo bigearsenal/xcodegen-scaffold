@@ -1,7 +1,7 @@
 import Common
 import SwiftUI
 
-struct DAppsView: View {
+struct DAppsWidgetView: View {
     var body: some View {
         ScrollView {
             HStack {
@@ -79,11 +79,12 @@ struct DAppsView: View {
                 }.ignoresSafeArea()
             )
         }
+        .navigationTitle("Home")
     }
 }
 
 #Preview {
-    DAppsView()
+    DAppsWidgetView()
 }
 
 // MARK: - Private
