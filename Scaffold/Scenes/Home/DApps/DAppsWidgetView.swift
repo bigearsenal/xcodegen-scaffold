@@ -3,7 +3,7 @@ import SwiftUI
 
 struct DAppsWidgetView: View {
     @StateObject var viewModel: DAppsWidgetViewModel
-    @State private var draggingItem: String?
+    @State private var draggingWidgetId: String?
 
     var body: some View {
         ScrollView {
@@ -47,10 +47,27 @@ struct DAppsWidgetView: View {
                 // Custom preview view
                 RoundedRectangle(cornerRadius: 10)
                     .fill(.ultraThinMaterial)
-                    .frame(width: 1, height: 1)
+                    .frame(width: 100, height: 100)
                     .onAppear {
-                        draggingItem = widget.id
+                        draggingWidgetId = widget.id
                     }
+            }
+            // Drop
+            .dropDestination(for: String.self) { _, _ in
+                draggingWidgetId = nil
+                return false
+            } isTargeted: { status in
+                if let draggingWidgetId, status, draggingWidgetId != widget.id {
+                    // Moving color from source to destination
+                    if let sourceIndex = viewModel.widgets.firstIndex(where: { $0.id == draggingWidgetId }),
+                       let destinationIndex = viewModel.widgets.firstIndex(where: { $0.id == widget.id })
+                    {
+                        withAnimation(.bouncy) {
+                            let sourceItem = viewModel.widgets.remove(at: sourceIndex)
+                            viewModel.widgets.insert(sourceItem, at: destinationIndex)
+                        }
+                    }
+                }
             }
     }
 
