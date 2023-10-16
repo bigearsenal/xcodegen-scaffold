@@ -68,7 +68,6 @@ struct DAppsWidgetView: View {
                 }
                 .gridCellColumns(2)
             }
-            .padding(.horizontal, 8)
             .background(
                 GeometryReader { geo in
                     Image("wallpaper-2")
@@ -78,6 +77,7 @@ struct DAppsWidgetView: View {
                         .offset(y: -500)
                 }.ignoresSafeArea()
             )
+            .padding()
         }
         .navigationTitle("Home")
     }
