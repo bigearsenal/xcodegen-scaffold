@@ -1,4 +1,12 @@
-*.xcodeproj
-*.xcworkspace
 *.DS_Store
 Config.xcconfig
+
+# Project files except Package.resolved
+Scaffold.xcodeproj/*
+!Scaffold.xcodeproj/project.xcworkspace/
+Scaffold.xcodeproj/project.xcworkspace/*
+!Scaffold.xcodeproj/project.xcworkspace/xcshareddata/
+Scaffold.xcodeproj/project.xcworkspace/xcshareddata/*
+!Scaffold.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
+Scaffold.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/*
+!Scaffold.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
