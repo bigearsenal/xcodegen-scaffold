@@ -42,6 +42,10 @@ targets:
             Debug: Scaffold/Application/Config.xcconfig
             Release: Scaffold/Application/Config.xcconfig
         sources: [Scaffold/Application]
+        dependencies:
+          - target: AutoFillTests
+            codeSign: false
+            embed: true
 
     AutoFillTests:
         type: app-extension
@@ -69,7 +73,7 @@ targets:
                 INFOPLIST_KEY_NSHumanReadableCopyright: ""
                 IPHONEOS_DEPLOYMENT_TARGET: 17.0
                 LOCALIZATION_PREFERS_STRING_CATALOGS: YES
-                MARKETING_VERSION: 1.0
+                MARKETING_VERSION: 1.0.0
                 PRODUCT_BUNDLE_IDENTIFIER: info.bigears.Scaffold.AutoFillTests
                 PRODUCT_NAME: "$(TARGET_NAME)"
                 SKIP_INSTALL: YES
