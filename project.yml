@@ -9,28 +9,8 @@ options:
     createIntermediateGroups: true
     deploymentTarget:
         iOS: 16.0
-    groupOrdering:
-        - pattern: '^.*Scaffold'
-          order: [Application, Common, Scenes, ScaffoldUI]
-        - pattern: '^.*Scenes$'
-          order: [Main, Onboarding, Home]
-        - pattern: '^.*Onboarding$'
-          order: [Onboarding, Login, SignUp]
-        # - pattern: '^.*Features$'
-        #   order: [Start, Sign In, Home, Quotes, Quote Detail, Settings]
     preGenCommand: rm -rf ~/Library/Developer/Xcode/DerivedData/Scaffold-* # clean build folder before xcodegen
         
-targetTemplates:
-    Module:
-        type: framework
-        platform: iOS
-        deploymentTarget: 16.0
-        settings:
-            base:
-                GENERATE_INFOPLIST_FILE: true
-                TARGETED_DEVICE_FAMILY: 1
-                SUPPORTS_MACCATALYST: false
-
 configs:
     Debug: debug
     Staging: release
@@ -59,59 +39,3 @@ targets:
             Debug: Scaffold/Application/Config.xcconfig
             Release: Scaffold/Application/Config.xcconfig
         sources: [Scaffold/Application]
-        dependencies:
-            - target: Main
-        
-    ScaffoldUI:
-        templates:
-            - Module
-        sources: [Scaffold/ScaffoldUI]
-
-    Common:
-        templates:
-            - Module
-        sources: [Scaffold/Common]
-
-    # Main
-    Main:
-        templates:
-            - Module
-        sources: [Scaffold/Scenes/Main]
-        dependencies:
-            - target: Onboarding
-            - target: Home
-
-
-    # Onboarding
-    Onboarding:
-        templates:
-            - Module
-        sources: [Scaffold/Scenes/Onboarding/Onboarding]
-        dependencies:
-            - target: Login
-            - target: SignUp
-
-    # Onboarding/Login
-    Login:
-        templates:
-            - Module
-        sources: [Scaffold/Scenes/Onboarding/Login]
-        dependencies:
-            - target: ScaffoldUI
-
-    # Onboarding/SignUp
-    SignUp:
-        templates:
-            - Module
-        sources: [Scaffold/Scenes/Onboarding/SignUp]
-        dependencies:
-            - target: ScaffoldUI
-
-    # Home
-    Home:
-        templates:
-            - Module
-        sources: [Scaffold/Scenes/Home]
-        dependencies:
-            - target: ScaffoldUI
-        
